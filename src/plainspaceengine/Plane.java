@@ -8,11 +8,10 @@ package plainspaceengine;
  *
  * @author Michael17
  */
-
-
-
-
-public class Camera {
-    static int RENDER_DISTANCE;
-    
+public class Plane {
+    Vec vec1;
+    Vec vec2;
+    Vec norm;
+    boolean normDefined;
+    boolean vectorDefined;
 }
