@@ -16,7 +16,6 @@ public class Vec {
     float y;
     float z;
     boolean twoD = false;
-    Point anchor;
     
     public Vec(float x, float y , float z){
         this.x = x;
@@ -41,34 +40,6 @@ public class Vec {
         this.x = x;
         this.y = y;
         this.z = 0;
-    }
-    
-    public Vec(float x, float y , float z, Point a){
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        twoD = false;
-        anchor = a;
-    }
-    
-    public Vec(float x, float y , float z, Point a, boolean twoD){
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        twoD = false;
-        if(twoD){
-            this.z = 0;
-            twoD = true;
-        }
-        anchor = a;
-    }
-    
-    public Vec(float x, float y , Point a){
-        twoD = true;
-        this.x = x;
-        this.y = y;
-        this.z = 0;
-        anchor =a;
     }
     
     public static float dot(Vec vec1, Vec vec2){
