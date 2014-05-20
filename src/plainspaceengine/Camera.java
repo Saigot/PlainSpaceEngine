@@ -4,6 +4,8 @@
  */
 package plainspaceengine;
 
+import plainspaceengine.Shapes.Plane;
+
 /**
  *
  * @author Michael17

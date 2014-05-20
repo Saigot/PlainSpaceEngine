@@ -15,15 +15,25 @@ public class Vec {
     float x;
     float y;
     float z;
+    Point anchor;
     boolean twoD = false;
+    boolean anchored;
     
     public Vec(float x, float y , float z){
         this.x = x;
         this.y = y;
         this.z = z;
         twoD = false;
+        anchored = false;
     }
-    
+    public Vec(float x, float y , float z, Point p){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        twoD = false;
+        anchored = true;
+        anchor = p;
+    }
     public Vec(float x, float y , float z, boolean twoD){
         this.x = x;
         this.y = y;
@@ -34,7 +44,17 @@ public class Vec {
             twoD = true;
         }
     }
-    
+    public Vec(float x, float y , float z, Point p, boolean twoD){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        twoD = false;
+        if(twoD){
+            this.z = 0;
+            twoD = true;
+        }
+        anchored = true;
+    }
     public Vec(float x, float y ){
         twoD = true;
         this.x = x;
@@ -42,14 +62,14 @@ public class Vec {
         this.z = 0;
     }
     
-    public static float dot(Vec vec1, Vec vec2){
-        return vec1.x * vec2.x + vec1.y *vec2.y + vec1.z * vec2.z;
+    public float dot( Vec v){
+        return x * v.x + y *v.y + z * v.z;
     }
     
-    public static Vec cross(Vec vec1, Vec vec2){
-        Vec ret = new Vec(vec1.y * vec2.z - vec2.y*vec1.z,
-                vec1.z * vec2.x - vec1.x * vec2.z, 
-                vec1.x * vec2.y - vec2.x * vec1.y);
+    public Vec cross(Vec v){
+        Vec ret = new Vec(y * v.z - v.y*z,
+                z * v.x - x * v.z, 
+                x * v.y - v.x * y);
         return ret;
     }
     
@@ -64,7 +84,7 @@ public class Vec {
     
     // projection of vec onto this.
     public Vec proj(Vec vec){
-        float constant = dot(this,vec) / dot(this, this);
+        float constant = dot(vec) / dot(this);
         Vec ret;
         try {
             ret = (Vec)this.clone();
@@ -79,4 +99,7 @@ public class Vec {
         return add(vec,proj(vec).scale(-1));
     }
     
+    public Point getTerminalPoint(){
+        return new Point(x+anchor.x, y+anchor.y, z+anchor.z);
+    }
 }

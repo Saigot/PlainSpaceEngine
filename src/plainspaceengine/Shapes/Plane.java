@@ -2,7 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package plainspaceengine;
+package plainspaceengine.Shapes;
+
+import plainspaceengine.Vec;
 
 /**
  *
@@ -65,9 +67,12 @@ public class Plane {
         scalarmin1 = n1;
         scalarmin2 = n2;
     }
-    public Vec proj(Vec v){
-        
-        
-        return null;
+    
+    
+    //
+    //Actual  Functions
+    //
+    public Vec proj(Vec v){        
+        return norm.perp(v);
     }
 }
