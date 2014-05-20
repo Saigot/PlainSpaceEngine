@@ -14,5 +14,5 @@ package plainspaceengine;
 
 public class Camera {
     static int RENDER_DISTANCE;
-    
+    Plane screen;
 }
